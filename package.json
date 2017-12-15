@@ -1,0 +1,34 @@
+{
+  "name": "no-internet",
+  "version": "1.0.0",
+  "description": "Checking if the internet is accessible (not local connection only)",
+  "main": "./src/no-internet.js",
+  "directories": {
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shystruk/no-internet"
+  },
+  "keywords": [
+    "internet",
+    "online",
+    "offline",
+    "on-internet",
+    "network",
+    "connected",
+    "accessible",
+    "connectivity",
+    "navigator",
+    "navigator.onLine"
+  ],
+  "author": {
+    "name": "Vasyl Stokolosa",
+    "email": "v.stokol@gmail.com",
+    "url": "https://github.com/shystruk"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "set-interval": "^1.0.8"
+  }
+}
