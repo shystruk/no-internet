@@ -55,4 +55,5 @@ Type: `function` <br>
 Arguments: `offline` type `boolean` <br>
 Default: `undefined`
 
-Callback is called in each connection checking
+Function that gets called in each connection checking
+
