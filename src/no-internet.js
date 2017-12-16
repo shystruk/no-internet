@@ -27,6 +27,9 @@ import SetInterval from 'set-interval';
         g.myModule = f();
     }
 })(function() {
+    const OFFLINE = true;
+    const ONLINE = false;
+
     const defaultOptions = {
         milliseconds: 5000,
         url: '/favicon.ico'
@@ -47,6 +50,8 @@ import SetInterval from 'set-interval';
             });
         }
 
+        _initEventListeners(options.callback);
+
         SetInterval.start(_checkConnection.bind(null, options.url, options.callback), options.milliseconds);
     }
 
@@ -62,14 +67,41 @@ import SetInterval from 'set-interval';
     function _checkConnection(url, callback) {
         url = _buildURL(url);
 
+        if (navigator.onLine) {
+            _sendRequest(url, callback);
+        } else {
+            callback(OFFLINE);
+        }
+    }
+
+    /**
+     * @param {Function} callback
+     * @private
+     */
+    function _initEventListeners(callback) {
+        window.addEventListener('online', () => {
+            callback(ONLINE);
+        });
+
+        window.addEventListener('offline', () => {
+            callback(OFFLINE);
+        });
+    }
+
+    /**
+     * @param {String} url
+     * @param {Function} callback
+     * @private
+     */
+    function _sendRequest(url, callback) {
         let xhr = new XMLHttpRequest();
 
         xhr.onload = () => {
-            callback(false);
+            callback(ONLINE);
         };
 
         xhr.onerror = () => {
-            callback(true);
+            callback(OFFLINE);
         };
 
         xhr.open('GET', url);
