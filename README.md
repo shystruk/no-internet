@@ -25,9 +25,10 @@ function noInternetCallback(offline) {
     }
 }
 
+// connection is checked each 5000 milliseconds
 noInternet({callback: noInternetCallback})
 
-// Clear interval
+// clear interval
 noInternet.clearInterval()
 ```
 
@@ -38,22 +39,21 @@ noInternet.clearInterval()
 Type: `Object`
 
 ##### milliseconds #####
-Type: `number`
-
+Type: `number` <br>
 Default: 5000
 
 Connection is checked at specified intervals (in milliseconds)
 
 ##### url #####
-Type: `string`
-
+Type: `string` <br>
 Default: `/favicon.ico`
 
+HTTP request is sent to `protocol//host/favicon.ico` for connection checking
+
 ##### callback #####
-Type: `function`
-
-Arguments: `offline` type `boolean`
-
+Type: `function` <br>
+Arguments: `offline` type `boolean` <br>
 Default: `undefined`
 
-Callback is called in each connection checking
+Function that gets called in each connection checking
+
