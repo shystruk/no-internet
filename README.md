@@ -25,7 +25,7 @@ function noInternetCallback(offline) {
     }
 }
 
-// connection is checked each 5000 milliseconds
+// connection is checked and callback is called each 5000 milliseconds
 noInternet({callback: noInternetCallback})
 
 // clear interval
