@@ -3,30 +3,17 @@
  License: MIT - https://opensource.org/licenses/MIT
  https://github.com/shystruk/no-internet
  */
+(function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ?
+        module.exports = factory(require('set-interval')) :
+        typeof define === 'function' && define.amd ?
+            define(['set-interval'], factory) :
+            (global.myBundle = factory(global.SetInterval));
+}(this, (function (SetInterval) {
+    'use strict';
 
-import SetInterval from 'set-interval';
+    SetInterval = SetInterval && SetInterval.hasOwnProperty('default') ? SetInterval['default'] : SetInterval;
 
-(function(f) {
-    if (typeof exports === 'object' && typeof module !== 'undefined') {
-        module.exports = f();
-    } else if (typeof define === 'function' && define.amd) {
-        define([],f);
-    } else {
-        var g;
-
-        if (typeof window !== 'undefined') {
-            g = window;
-        } else if(typeof global !== 'undefined') {
-            g = global;
-        } else if(typeof self !== 'undefined') {
-            g = self;
-        } else {
-            g = this;
-        }
-
-        g.myModule = f();
-    }
-})(function() {
     const OFFLINE = true;
     const ONLINE = false;
 
@@ -46,7 +33,7 @@ import SetInterval from 'set-interval';
 
         if (!(!!options.callback)) {
             return new Promise(resolve => {
-                _checkConnection(options.url, resolve)
+                _checkConnection(options.url, resolve);
             });
         }
 
@@ -118,4 +105,4 @@ import SetInterval from 'set-interval';
     }
 
     return noInternet;
-});
+})));
