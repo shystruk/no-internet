@@ -1,6 +1,6 @@
 {
   "name": "no-internet",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Checking if the internet is accessible (not local connection only)",
   "main": "./src/no-internet.js",
   "directories": {
