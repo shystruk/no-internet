@@ -8,9 +8,9 @@
     "src": "src"
   },
   "scripts": {
-    "report-coverage": "cat ./coverage.lcov | codecov",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov",
-    "test": "nyc ava && npm run coverage"
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "coverage": "nyc report --reporter=lcov",
+    "test": "nyc ava --browser && npm run coverage"
   },
   "keywords": [
     "internet",
@@ -35,7 +35,10 @@
   },
   "devDependencies": {
     "ava": "^0.24.0",
+    "browser-env": "^3.2.4",
     "codecov.io": "^0.1.6",
-    "nyc": "^11.3.0"
+    "nock": "^9.1.4",
+    "nyc": "^11.3.0",
+    "xhr-mock": "^1.9.1"
   }
 }

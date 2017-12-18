@@ -101,6 +101,10 @@
      * @private
      */
     function _buildURL(url) {
+        if (url.indexOf('http') !== -1) {
+            return url;
+        }
+
         return window.location.protocol + '//' + window.location.host + url;
     }
 
