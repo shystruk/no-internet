@@ -14,10 +14,9 @@
 
     SetInterval = SetInterval && SetInterval.hasOwnProperty('default') ? SetInterval['default'] : SetInterval;
 
-    const OFFLINE = true;
-    const ONLINE = false;
-
-    const defaultOptions = {
+    var OFFLINE = true;
+    var ONLINE = false;
+    var defaultOptions = {
         milliseconds: 5000,
         url: '/favicon.ico'
     };
@@ -32,7 +31,7 @@
         options.url = options.url || defaultOptions.url;
 
         if (!(!!options.callback)) {
-            return new Promise(resolve => {
+            return new Promise(function (resolve) {
                 _checkConnection(options.url, resolve);
             });
         }
@@ -66,11 +65,11 @@
      * @private
      */
     function _initEventListeners(callback) {
-        window.addEventListener('online', () => {
+        window.addEventListener('online', function () {
             callback(ONLINE);
         });
 
-        window.addEventListener('offline', () => {
+        window.addEventListener('offline', function () {
             callback(OFFLINE);
         });
     }
@@ -81,13 +80,13 @@
      * @private
      */
     function _sendRequest(url, callback) {
-        let xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest();
 
-        xhr.onload = () => {
+        xhr.onload = function () {
             callback(ONLINE);
         };
 
-        xhr.onerror = () => {
+        xhr.onerror = function () {
             callback(OFFLINE);
         };
 
