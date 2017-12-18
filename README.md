@@ -56,9 +56,10 @@ Connection is checked at specified intervals (in milliseconds)
 
 ##### url #####
 Type: `string` <br>
-Default: `/favicon.ico`
+Default: `${window.location.protocol}//${window.location.host}/favicon.ico`
 
-HTTP request is sent to `protocol//host/favicon.ico` for connection checking
+HTTP request is sent to `DOMAIN/favicon.ico` for connection checking. <br>
+You can specify URL with domain for e.g. `https://github.com/favicon.ico`
 
 ##### callback #####
 Type: `function` <br>
