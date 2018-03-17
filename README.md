@@ -68,3 +68,12 @@ Default: `undefined`
 
 Function that gets called in each connection checking
 
+## Contributing
+
+Any contributions you make **are greatly appreciated**.
+
+Please read the [Contributions Guidelines](CONTRIBUTING.md) before submitting a PR.
+
+## License
+
+MIT © [Vasyl Stokolosa](https://about.me/shystruk)
