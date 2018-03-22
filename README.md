@@ -3,7 +3,7 @@
 
 Checking if the internet is accessible (not local connection only)
 
-`window.navigator.onLine` is the simplest approach to return the online status of the browser. It is not guarantee to be accurate. Most implementations of the API watch for changes in the local network interface to determine if your application is online or not. But what if your network interface is up, but your router is down ☝️. `window.navigator.onLine` will return `true` and it means that you are online and that is WRONG. To handle that case we make `XMLHttpRequest` and listen change in the network state by events `window.ononline` and `window.onoffline` to be notified immediatly 😎 
+`window.navigator.onLine` is the simplest approach to return the online status of the browser. It is not guaranteed to be accurate. Most implementations of the API watch for changes in the local network interface to determine if your application is online or not. But what if your network interface is up, but your router is down ☝️. `window.navigator.onLine` will return `true` and it means that you are online and that is WRONG. To handle that case we make `XMLHttpRequest` and listen to change in the network state by events `window.ononline` and `window.onoffline` to be notified immediately 😎 
 
 ## Getting no-internet ##
 
