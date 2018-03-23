@@ -54,7 +54,7 @@
 
     /**
      * @param {String} url
-     * @param {Array} headers
+     * @param {Object} headers
      * @param {Function} callback
      * @private
      */
@@ -84,7 +84,7 @@
 
     /**
      * @param {String} url
-     * @param {Array} headers
+     * @param {Object} headers
      * @param {Function} callback
      * @private
      */
