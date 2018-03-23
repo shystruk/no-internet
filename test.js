@@ -27,7 +27,8 @@ test('one check', t => {
 test.cb('interval checking', t => {
     const options = {
         url: URL,
-        callback: noInternetCallback
+        callback: noInternetCallback,
+        headers: { 'Access-Control-Allow-Origin': '*' }
     };
 
     noInternet(options);

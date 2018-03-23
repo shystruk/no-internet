@@ -18,7 +18,10 @@
     var ONLINE = false;
     var defaultOptions = {
         milliseconds: 5000,
-        url: '/favicon.ico'
+        url: '/favicon.ico',
+        headers: { 
+            'Cache-Control': 'no-cache'
+        }
     };
 
     /**
@@ -29,16 +32,17 @@
         options = options || {};
         options.milliseconds = options.milliseconds || defaultOptions.milliseconds;
         options.url = options.url || defaultOptions.url;
+        options.headers = _extend(defaultOptions.headers, options.headers);
 
         if (!(!!options.callback)) {
             return new Promise(function (resolve) {
-                _checkConnection(options.url, resolve);
+                _checkConnection(options.url, options.headers, resolve);
             });
         }
 
         _initEventListeners(options.callback);
 
-        SetInterval.start(_checkConnection.bind(null, options.url, options.callback),
+        SetInterval.start(_checkConnection.bind(null, options.url, options.headers, options.callback),
                           options.milliseconds,
                           'checkConnection'
         );
@@ -50,14 +54,15 @@
 
     /**
      * @param {String} url
+     * @param {Array} headers
      * @param {Function} callback
      * @private
      */
-    function _checkConnection(url, callback) {
+    function _checkConnection(url, headers, callback) {
         url = _buildURL(url);
 
         if (navigator.onLine) {
-            _sendRequest(url, callback);
+            _sendRequest(url, headers, callback);
         } else {
             callback(OFFLINE);
         }
@@ -79,10 +84,11 @@
 
     /**
      * @param {String} url
+     * @param {Array} headers
      * @param {Function} callback
      * @private
      */
-    function _sendRequest(url, callback) {
+    function _sendRequest(url, headers, callback) {
         var xhr = new XMLHttpRequest();
 
         xhr.onload = function () {
@@ -94,6 +100,11 @@
         };
 
         xhr.open('GET', url);
+
+        for (var key in headers) {
+            xhr.setRequestHeader(key, headers[key]);
+        }
+
         xhr.send();
     }
 
@@ -108,6 +119,24 @@
         }
 
         return window.location.protocol + '//' + window.location.host + url;
+    }
+
+    /**
+     * @param {Object} target 
+     * @param {Object} obj
+     * @return {Object}
+     * @private
+     */
+    function _extend(target, obj) {
+        if (!obj) {
+            return target
+        }
+
+        Object.keys(obj).forEach(function(key) { 
+            target[key] = obj[key];
+        });
+
+        return target;
     }
 
     return noInternet;

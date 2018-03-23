@@ -36,14 +36,24 @@ function noInternetCallback(offline) {
 }
 
 // connection is checked and callback is called each 5000 milliseconds
-noInternet({callback: noInternetCallback})
+noInternet({ callback: noInternetCallback })
 
 // clear interval
 noInternet.clearInterval()
 ```
 
+### With options ###
+```javascript
+noInternet({
+    milliseconds: 10000,
+    callback: noInternetCallback,
+    url: 'https://github.com/favicon.ico',
+    headers: { 'Access-Control-Allow-Origin': '*' }
+})
+```
+
 ## API ##
-### noInternet([options]) ###
+### noInternet(options) ###
 
 #### options ####
 Type: `Object`
@@ -60,6 +70,12 @@ Default: `${window.location.protocol}//${window.location.host}/favicon.ico`
 
 HTTP request is sent to `DOMAIN/favicon.ico` for connection checking. <br>
 You can specify URL with domain for e.g. `https://github.com/favicon.ico`
+
+##### headers #####
+Type: `Object` <br>
+Default: `{ 'Cache-Control': 'no-cache' }`
+
+An object of additional headers key/value pairs to send along with request
 
 ##### callback #####
 Type: `function` <br>
