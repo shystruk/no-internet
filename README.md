@@ -55,29 +55,29 @@ noInternet({
 ## API ##
 ### noInternet(options) ###
 
-#### options ####
+### options ###
 Type: `Object`
 
-##### milliseconds #####
+#### milliseconds ####
 Type: `number` <br>
 Default: 5000
 
 Connection is checked at specified intervals (in milliseconds)
 
-##### url #####
+#### url ####
 Type: `string` <br>
 Default: `${window.location.protocol}//${window.location.host}/favicon.ico`
 
 HTTP request is sent to `DOMAIN/favicon.ico` for connection checking. <br>
 You can specify URL with domain for e.g. `https://github.com/favicon.ico`
 
-##### headers #####
+#### headers ####
 Type: `Object` <br>
 Default: `{ 'Cache-Control': 'no-cache' }`
 
 An object of additional headers key/value pairs to send along with request
 
-##### callback #####
+#### callback ####
 Type: `function` <br>
 Arguments: `offline` type `boolean` <br>
 Default: `undefined`
