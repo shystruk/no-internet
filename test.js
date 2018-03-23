@@ -48,7 +48,7 @@ test.cb('should clear interval checking', t => {
     noInternet(options);
     noInternet.clearInterval();
 
-    t.is(SetInterval.timer, void 0);
+    t.is(SetInterval.key['checkConnection'], void 0);
 
     setTimeout(t.end);
 });

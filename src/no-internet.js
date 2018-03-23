@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2017 Vasyl Stokolosa https://github.com/shystruk
+ Copyright (c) Vasyl Stokolosa https://github.com/shystruk
  License: MIT - https://opensource.org/licenses/MIT
  https://github.com/shystruk/no-internet
  */
@@ -38,11 +38,14 @@
 
         _initEventListeners(options.callback);
 
-        SetInterval.start(_checkConnection.bind(null, options.url, options.callback), options.milliseconds);
+        SetInterval.start(_checkConnection.bind(null, options.url, options.callback),
+                          options.milliseconds,
+                          'checkConnection'
+        );
     }
 
     noInternet.clearInterval = function () {
-        SetInterval.clear();
+        SetInterval.clear('checkConnection');
     };
 
     /**
