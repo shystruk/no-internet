@@ -46,6 +46,7 @@ noInternet.clearInterval()
 ```javascript
 noInternet({
     milliseconds: 10000,
+    timeout: 4000,
     callback: noInternetCallback,
     url: 'https://github.com/favicon.ico',
     headers: { 'Access-Control-Allow-Origin': '*' }
@@ -63,6 +64,12 @@ Type: `number` <br>
 Default: 5000
 
 Connection is checked at specified intervals (in milliseconds)
+
+#### timeout ####
+Type: `number` <br>
+Default: 5000
+
+Number of milliseconds to wait for XHR Request to complete
 
 #### url ####
 Type: `string` <br>

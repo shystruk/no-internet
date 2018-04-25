@@ -18,6 +18,7 @@
     var ONLINE = false;
     var defaultOptions = {
         milliseconds: 5000,
+        timeout: 5000,
         url: '/favicon.ico',
         headers: { 
             'Cache-Control': 'no-cache'
@@ -31,18 +32,19 @@
     function noInternet(options) {
         options = options || {};
         options.milliseconds = options.milliseconds || defaultOptions.milliseconds;
+        options.timeout = options.timeout || defaultOptions.timeout;
         options.url = options.url || defaultOptions.url;
         options.headers = _extend(defaultOptions.headers, options.headers);
 
         if (!(!!options.callback)) {
             return new Promise(function (resolve) {
-                _checkConnection(options.url, options.headers, resolve);
+                _checkConnection(options.url, options.headers, options.timeout, resolve);
             });
         }
 
         _initEventListeners(options.callback);
 
-        SetInterval.start(_checkConnection.bind(null, options.url, options.headers, options.callback),
+        SetInterval.start(_checkConnection.bind(null, options.url, options.headers, options.timeout, options.callback),
                           options.milliseconds,
                           'checkConnection'
         );
@@ -58,11 +60,11 @@
      * @param {Function} callback
      * @private
      */
-    function _checkConnection(url, headers, callback) {
+    function _checkConnection(url, headers, timeout, callback) {
         url = _buildURL(url);
 
         if (navigator.onLine) {
-            _sendRequest(url, headers, callback);
+            _sendRequest(url, headers, timeout, callback);
         } else {
             callback(OFFLINE);
         }
@@ -88,14 +90,19 @@
      * @param {Function} callback
      * @private
      */
-    function _sendRequest(url, headers, callback) {
+    function _sendRequest(url, headers, timeout, callback) {
         var xhr = new XMLHttpRequest();
+        xhr.timeout = timeout;
 
         xhr.onload = function () {
             callback(ONLINE);
         };
 
         xhr.onerror = function () {
+            callback(OFFLINE);
+        };
+
+        xhr.ontimeout = function (e) {
             callback(OFFLINE);
         };
 
