@@ -12,7 +12,9 @@
 }(this, (function (SetInterval) {
     'use strict';
 
-    SetInterval = SetInterval && SetInterval.hasOwnProperty('default') ? SetInterval['default'] : SetInterval;
+    SetInterval = SetInterval && SetInterval.hasOwnProperty('default')
+        ? SetInterval['default']
+        : SetInterval;
 
     var OFFLINE = true;
     var ONLINE = false;
@@ -38,15 +40,21 @@
 
         if (!(!!options.callback)) {
             return new Promise(function (resolve) {
-                _checkConnection(options.url, options.headers, options.timeout, resolve);
+                _checkConnection(
+                    options.url,
+                    options.headers,
+                    options.timeout,
+                    resolve
+                );
             });
         }
 
         _initEventListeners(options.callback);
 
-        SetInterval.start(_checkConnection.bind(null, options.url, options.headers, options.timeout, options.callback),
-                          options.milliseconds,
-                          'checkConnection'
+        SetInterval.start(
+            _checkConnection.bind(null, options.url, options.headers, options.timeout, options.callback),
+            options.milliseconds,
+            'checkConnection'
         );
     }
 
@@ -102,7 +110,7 @@
             callback(OFFLINE);
         };
 
-        xhr.ontimeout = function (e) {
+        xhr.ontimeout = function () {
             callback(OFFLINE);
         };
 
