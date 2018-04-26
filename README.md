@@ -69,7 +69,7 @@ Connection is checked at specified intervals (in milliseconds)
 Type: `number` <br>
 Default: 5000
 
-Number of milliseconds a request can take before automatically being terminated(completed).
+Number of milliseconds a request can take before automatically being terminated (completed).
 
 #### url ####
 Type: `string` <br>
