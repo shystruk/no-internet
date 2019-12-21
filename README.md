@@ -1,5 +1,7 @@
 # no-internet [![Twitter URL](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?hashtags=javascript%20%23Internet%20%23connection&original_referer=https%3A%2F%2Fpublish.twitter.com%2F&ref_src=twsrc%5Etfw&text=%F0%9F%93%A1Check%20if%20the%20internet%20is%20accessible%20(not%20local%20connection%20only).%20Do%20it%20in%20interval%20or%20one%20check%20&tw_p=tweetbutton&url=https%3A%2F%2Fgithub.com%2Fshystruk%2Fno-internet&via=shystrukk) #
-[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![codecov](https://codecov.io/gh/shystruk/no-internet/branch/master/graph/badge.svg)](https://codecov.io/gh/shystruk/no-internet) [![Build Status](https://travis-ci.org/shystruk/no-internet.svg?branch=master)](https://travis-ci.org/shystruk/no-internet) [![npm version](https://badge.fury.io/js/no-internet.svg)](https://badge.fury.io/js/no-internet)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php) [![codecov](https://codecov.io/gh/shystruk/no-internet/branch/master/graph/badge.svg)](https://codecov.io/gh/shystruk/no-internet) [![Build Status](https://travis-ci.org/shystruk/no-internet.svg?branch=master)](https://travis-ci.org/shystruk/no-internet)
+[![Known Vulnerabilities](https://snyk.io/test/github/shystruk/no-internet/badge.svg?targetFile=package.json)](https://snyk.io/test/github/shystruk/no-internet?targetFile=package.json)
+[![npm version](https://badge.fury.io/js/no-internet.svg)](https://badge.fury.io/js/no-internet)
 
 Checking if the internet is accessible in the browser (not local connection only)
 
