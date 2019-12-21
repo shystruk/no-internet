@@ -5,7 +5,7 @@ import SetInterval from 'set-interval';
 import browserEnv from 'browser-env';
 browserEnv(['window', 'document', 'navigator', 'XMLHttpRequest']);
 
-const URL = 'https://github.com/favicon.ico';
+const URL = 'https://www.google.com/favicon.ico';
 
 test.before(t => {
     mock.setup();
@@ -19,7 +19,7 @@ test('module should be a function', t => {
 });
 
 test('one check', t => {
-    return noInternet({url: URL}).then(offline => {
+    return noInternet({ url: URL }).then(offline => {
         t.false(offline);
     });
 });
