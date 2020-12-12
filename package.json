@@ -1,43 +1,43 @@
 {
-  "name": "no-internet",
-  "version": "1.5.2",
-  "description": "Checking if the internet is accessible (not local connection only)",
-  "main": "./src/no-internet.js",
-  "repository": "https://github.com/shystruk/no-internet.git",
-  "directories": {
-    "src": "src"
-  },
-  "scripts": {
-    "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "coverage": "nyc report --reporter=lcov",
-    "test": "nyc ava --browser && npm run coverage"
-  },
-  "keywords": [
-    "internet",
-    "online",
-    "offline",
-    "on-internet",
-    "network",
-    "connected",
-    "accessible",
-    "connectivity",
-    "navigator",
-    "navigator.onLine"
-  ],
-  "author": {
-    "name": "Vasyl Stokolosa",
-    "email": "v.stokol@gmail.com",
-    "url": "https://github.com/shystruk"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "set-interval": "^2.0.1"
-  },
-  "devDependencies": {
-    "ava": "^0.24.0",
-    "browser-env": "^3.2.4",
-    "codecov.io": "^0.1.6",
-    "nyc": "^11.3.0",
-    "xhr-mock": "^1.9.1"
-  }
+	"name": "no-internet",
+	"version": "1.5.2",
+	"description": "Checking if the internet is accessible (not local connection only)",
+	"main": "./src/no-internet.js",
+	"repository": "https://github.com/shystruk/no-internet.git",
+	"directories": {
+		"src": "src"
+	},
+	"scripts": {
+		"report-coverage": "cat ./coverage/lcov.info | codecov",
+		"coverage": "nyc report --reporter=lcov",
+		"test": "nyc ava --browser && npm run coverage"
+	},
+	"keywords": [
+		"internet",
+		"online",
+		"offline",
+		"on-internet",
+		"network",
+		"connected",
+		"accessible",
+		"connectivity",
+		"navigator",
+		"navigator.onLine"
+	],
+	"author": {
+		"name": "Vasyl Stokolosa",
+		"email": "v.stokol@gmail.com",
+		"url": "https://github.com/shystruk"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"set-interval": "^2.0.1"
+	},
+	"devDependencies": {
+		"ava": "^0.24.0",
+		"browser-env": "^3.2.4",
+		"codecov.io": "^0.1.6",
+		"nyc": "^11.3.0",
+		"xhr-mock": "^1.9.1"
+	}
 }

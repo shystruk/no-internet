@@ -8,14 +8,14 @@ browserEnv(['window', 'document', 'navigator', 'XMLHttpRequest']);
 const URL = 'https://www.google.com/favicon.ico';
 
 test.before(t => {
-    mock.setup();
-    mock.get(URL, function (req, res) {
-        return res.status(200)
-    });
+	mock.setup();
+	mock.get(URL, function (req, res) {
+		return res.status(200)
+	});
 });
 
 test('module should be a function', t => {
-    t.is(typeof noInternet, 'function');
+	t.is(typeof noInternet, 'function');
 });
 
 // TODO: check Travis configuration for HTTP request
@@ -26,37 +26,37 @@ test('module should be a function', t => {
 // });
 
 test.cb('interval checking', t => {
-    const options = {
-        url: URL,
-        callback: noInternetCallback,
-        headers: { 'Access-Control-Allow-Origin': '*' }
-    };
+	const options = {
+		url: URL,
+		callback: noInternetCallback,
+		headers: { 'Access-Control-Allow-Origin': '*' }
+	};
 
-    noInternet(options);
+	noInternet(options);
 
-    function noInternetCallback(offline) {
-        t.false(offline);
-    }
+	function noInternetCallback(offline) {
+		t.false(offline);
+	}
 
-    setTimeout(t.end);
+	setTimeout(t.end);
 });
 
 test.cb('should clear interval checking', t => {
-    const options = {
-        url: URL,
-        callback: () => {}
-    };
+	const options = {
+		url: URL,
+		callback: () => { }
+	};
 
-    noInternet(options);
-    noInternet.clearInterval();
+	noInternet(options);
+	noInternet.clearInterval();
 
-    t.is(SetInterval.key['checkConnection'], void 0);
+	t.is(SetInterval.key['checkConnection'], void 0);
 
-    setTimeout(t.end);
+	setTimeout(t.end);
 });
 
 test('invalid URL', t => {
-    return noInternet().then(offline => {
-        t.true(offline);
-    });
+	return noInternet().then(offline => {
+		t.true(offline);
+	});
 });
