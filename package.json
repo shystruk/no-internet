@@ -1,6 +1,6 @@
 {
 	"name": "no-internet",
-	"version": "1.5.2",
+	"version": "1.5.3",
 	"description": "Checking if the internet is accessible (not local connection only)",
 	"main": "./src/no-internet.js",
 	"repository": "https://github.com/shystruk/no-internet.git",
