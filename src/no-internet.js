@@ -100,6 +100,7 @@
 	 */
 	function _sendRequest(url, headers, timeout, callback) {
 		var xhr = new XMLHttpRequest();
+		xhr.open('GET', url);
 		xhr.timeout = timeout;
 
 		xhr.onload = function () {
@@ -113,8 +114,6 @@
 		xhr.ontimeout = function () {
 			callback(OFFLINE);
 		};
-
-		xhr.open('GET', url);
 
 		for (var key in headers) {
 			xhr.setRequestHeader(key, headers[key]);
